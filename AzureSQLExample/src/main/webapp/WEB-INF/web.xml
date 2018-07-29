@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	 version="3.0">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <data-source>
+        <name>java:global/AzureSQLDB</name>
+        <class-name>com.microsoft.sqlserver.jdbc.SQLServerXADataSource</class-name>
+        <server-name>${ENV=DB_HOST}</server-name>
+        <port-number>1433</port-number>
+        <database-name>${ENV=DB_NAME}</database-name>
+        <user>${ENV=JDBC_USER}</user>
+        <password>${ENV=JDBC_PASSWORD}</password>
+    </data-source>
+</web-app>

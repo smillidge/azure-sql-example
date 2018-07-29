@@ -1,0 +1,9 @@
+FROM azul/zulu-openjdk-alpine
+
+RUN mkdir -p /opt/payara/deployments
+RUN wget --quiet -O /opt/payara/payara-micro.jar https://search.maven.org/remotecontent?filepath=fish/payara/extras/payara-micro/5.182/payara-micro-5.182.jar
+
+EXPOSE 80
+
+ENTRYPOINT ["java", "-jar", "-Xms256M", "-Xmx256M", "/opt/payara/payara-micro.jar"]
+CMD ["--deploymentDir", "/opt/payara/deployments", "--nocluster", "--port", "80"]
